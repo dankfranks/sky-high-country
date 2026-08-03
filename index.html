@@ -86,30 +86,40 @@
       <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
 
       <!-- Slide 1 -->
-      <div class="slide active">
-        <!-- PLACEHOLDER SLIDE THUMBNAIL -->
-        <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-1.jpg" alt="Snowflake House">
-        <div class="slide-content">
-          <!-- REPLACE 'YOUTUBE_VIDEO_ID' WITH YOUR ACTUAL YOUTUBE EMBED OR LINK -->
-          <button type="button" class="play-btn" onclick="openVideoModal(event, 'https://www.youtube.com/embed/AYaCRbjhddU?autoplay=1')">
-            &#9654; Play Video
+    <div class="slide active">
+      <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-1.jpg" alt="Snowflake House">
+  
+    <!-- Slide Content Overlay -->
+    <div class="slide-content">
+      <button type="button" class="play-btn" onclick="playInSlide(this, 'https://www.youtube.com/embed/AYaCRbjhddU?autoplay=1')">
+        &#9654; Play Video
+      </button>
+      <h3 class="slide-title">Snowflake House</h3>
+      <p class="slide-subtitle">Banner Elk, NC</p>
+    </div>
+
+      <!-- Inline Video Wrapper (Hidden until play is clicked) -->
+      <div class="slide-video-container">
+        <button type="button" class="close-slide-video" onclick="stopSlideVideo(this)">&times;</button>
+        <iframe class="slide-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Sunset Ridge">
+  
+      <div class="slide-content">
+        <button type="button" class="play-btn" onclick="playInSlide(this, 'https://www.youtube.com/embed/uJeJXEkVDPg?autoplay=1')">
+          &#9654; Play Video
         </button>
-          <h3 class="slide-title">Snowflake House</h3>
-          <p class="slide-subtitle">Banner Elk, NC</p>
-        </div>
+        <h3 class="slide-title">Mountain View Lodge</h3>
+        <p class="slide-subtitle">Blowing Rock, NC</p>
       </div>
 
-      <!-- Slide 2 -->
-      <div class="slide">
-        <!-- PLACEHOLDER SLIDE THUMBNAIL -->
-        <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Sunset Ridge">
-        <div class="slide-content">
-          <button type="button" class="play-btn" onclick="openVideoModal(event, 'https://www.youtube.com/embed/uJeJXEkVDPg?autoplay=1')">
-            &#9654; Play Video
-        </button>
-          <h3 class="slide-title">Mountain View Lodge</h3>
-          <p class="slide-subtitle">Blowing Rock, NC</p>
-        </div>
+      <div class="slide-video-container">
+        <button type="button" class="close-slide-video" onclick="stopSlideVideo(this)">&times;</button>
+        <iframe class="slide-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -206,28 +216,46 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-  function openVideoModal(event, videoUrl) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    const modal = document.getElementById('videoModal');
-    const iframe = document.getElementById('youtubePlayer');
-    if (modal && iframe) {
+    function playInSlide(btnElement, videoUrl) {
+      // Find the parent slide box
+      const slide = btnElement.closest('.slide');
+      const videoContainer = slide.querySelector('.slide-video-container');
+      const iframe = slide.querySelector('.slide-iframe');
+
+      // Load video URL and show container
       iframe.src = videoUrl;
-      modal.style.display = 'flex';
-    }
+      videoContainer.classList.add('active');
   }
 
-  function closeVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const iframe = document.getElementById('youtubePlayer');
-    if (modal && iframe) {
+    function stopSlideVideo(closeBtnElement) {
+      const slide = closeBtnElement.closest('.slide');
+      const videoContainer = slide.querySelector('.slide-video-container');
+      const iframe = slide.querySelector('.slide-iframe');
+
+      // Unload video source to stop playback & hide container
       iframe.src = '';
-      modal.style.display = 'none';
+      videoContainer.classList.remove('active');
     }
-  }
-</script>
+
+    // Automatically stop video playback when switching slides via arrows
+    function changeSlide(direction) {
+      // Stop any active inline video before switching
+      document.querySelectorAll('.slide-iframe').forEach(iframe => iframe.src = '');
+      document.querySelectorAll('.slide-video-container').forEach(container => container.classList.remove('active'));
+
+      const slides = document.querySelectorAll('.slide');
+      if (!slides.length) return;
+
+      let currentIndex = 0;
+      slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) currentIndex = index;
+        slide.classList.remove('active');
+      });
+
+      let nextIndex = (currentIndex + direction + slides.length) % slides.length;
+      slides[nextIndex].classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
