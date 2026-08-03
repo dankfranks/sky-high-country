@@ -511,7 +511,10 @@ img, video {
 .video-slider {
   position: relative;
   width: 100%;
-  height: 700px;
+  max-width: 1200px;     /* Keeps slider from stretching too wide on massive screens */
+  margin: 0 auto;        /* Centers gallery container */
+  aspect-ratio: 16 / 9;  /* Matches standard video proportions */
+  max-height: 650px;     /* Prevents it from getting overly tall */
   overflow: hidden;
   background: #000;
 }
@@ -537,6 +540,13 @@ img, video {
   height: 100%;
   object-fit: cover;
   opacity: 0.6;
+}
+
+.slide-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  object-fit: cover;     /* Fills container without creating letterboxing */
 }
 
 .slide-content {
@@ -719,30 +729,36 @@ img, video {
 .slide-video-container {
   display: none;             /* Hidden by default */
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers video inside slide frame */
   width: 100%;
   height: 100%;
-  z-index: 20;               /* Sits right above image and text, but inside gallery bounds */
+  max-width: 100%;
   background: #000000;
+  z-index: 20;
 }
 
 .slide-video-container.active {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Force YouTube iframe to fill the container without letterboxing distortion */
 .slide-iframe {
   width: 100%;
   height: 100%;
   border: none;
+  object-fit: cover;
 }
 
-/* Close button inside gallery corner */
+/* Close button positioning */
 .close-slide-video {
   position: absolute;
   top: 15px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   border: 1px solid #ffffff;
   color: #ffffff;
   font-size: 20px;
@@ -754,10 +770,4 @@ img, video {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease;
-}
-
-.close-slide-video:hover {
-  background: #ffffff;
-  color: #000000;
 }
