@@ -57,7 +57,7 @@ img, video {
   position: relative; /* Set to relative so it pushes content down cleanly */
   width: 100%;
   height: 70px;
-  background-color: #335870; /* Solid blue-slate background matching screenshot */
+  background-color: #2C576F; /* Solid blue-slate background matching screenshot */
   color: var(--text-light);
   display: flex;
   justify-content: space-between;
@@ -118,7 +118,7 @@ img, video {
   top: 100%;
   right: 0;
   width: 180px;
-  background-color: #335870; /* Matches solid header color */
+  background-color: #2C576F; /* Matches solid header color */
   list-style: none;
   padding: 0.5rem 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
