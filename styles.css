@@ -436,3 +436,22 @@ img, video {
   .slide-title { font-size: 1.6rem; }
   .footer { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
 }
+
+/* --------------------------------------------------
+   ACCORDION BUTTON LINKS
+-------------------------------------------------- */
+.bundle-link-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--bg-slate);
+  color: var(--text-light);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.bundle-link-btn:hover {
+  opacity: 0.9;
+}
