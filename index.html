@@ -161,11 +161,18 @@
 
     // --- Manual Portfolio Video Slider ---
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.video-slider .slide');
 
     function changeSlide(direction) {
-      slides[currentSlide].classList.remove('active');
+      const slides = document.querySelectorAll('.video-slider .slide');
+      if (!slides.length) return;
+
+    // Remove active class from current slide
+    slides[currentSlide].classList.remove('active');
+
+      // Calculate next slide index
       currentSlide = (currentSlide + direction + slides.length) % slides.length;
+
+      // Add active class to new slide
       slides[currentSlide].classList.add('active');
     }
 
