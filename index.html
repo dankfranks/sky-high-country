@@ -7,6 +7,11 @@
   
   <!-- IMPORTANT: Must match filename exactly (case-sensitive) -->
   <link rel="stylesheet" href="styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -41,8 +46,8 @@
   <!-- HERO SECTION WITH VIDEO BACKGROUND -->
   <section class="hero" id="home">
     <!-- REPLACE PLACEHOLDER VIDEO URL -->
-    <video class="hero-video" autoplay loop muted playsinline poster="https://raw.githubusercontent.com/username/repo/main/images/hero-fallback.jpg">
-      <source src="https://raw.githubusercontent.com/username/repo/main/videos/hero-background.mp4" type="video/mp4">
+    <video class="hero-video" autoplay loop muted playsinline poster="assets/home/blue-ridge-mtn-loop.mp4">
+      <source src="assets/home/blue-ridge-mtn-loop.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <div class="hero-overlay"></div>
@@ -56,43 +61,18 @@
 
   <!-- SERVICE BUNDLES SECTION -->
   <section class="services-section">
-  <h2>Service Bundles</h2>
+  <h2 class="services-title">Service Bundles</h2>
 
-  <div class="services-accordion">
-    
-    <!-- BUNDLE 1: PHOTO & VIDEO -->
-    <div class="accordion-hover-item">
-      <a href="photo-video.html" class="accordion-main-bar">
-        <span>Photo & Video Bundles</span>
-        <span class="icon">+</span>
-      </a>
-      <div class="accordion-dropdown-content">
-        <p>Combine high-resolution photography with cinematic video coverage for complete property marketing.</p>
-      </div>
-    </div>
-
-    <!-- BUNDLE 2: PHOTOGRAPHY -->
-    <div class="accordion-hover-item">
-      <a href="photography.html" class="accordion-main-bar">
-        <span>Photography Services</span>
-        <span class="icon">+</span>
-      </a>
-      <div class="accordion-dropdown-content">
-        <p>Interior, exterior, twilight, and aerial drone photos styled to showcase every detail.</p>
-      </div>
-    </div>
-
-    <!-- BUNDLE 3: VIDEO -->
-    <div class="accordion-hover-item">
-      <a href="video.html" class="accordion-main-bar">
-        <span>Video & Aerial Services</span>
-        <span class="icon">+</span>
-      </a>
-      <div class="accordion-dropdown-content">
-        <p>High-definition walkthroughs, vertical social media reels, and 4K aerial flyovers.</p>
-      </div>
-    </div>
-
+  <div class="services-list">
+    <a href="photo-video.html" class="service-row">
+      <span>Photo &amp; Video</span>
+    </a>
+    <a href="photography.html" class="service-row">
+      <span>MLS Photography</span>
+    </a>
+    <a href="video.html" class="service-row">
+      <span>Video Footage</span>
+    </a>
   </div>
 </section>
 
