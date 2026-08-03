@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky High Country | Real Estate Production Services</title>
+  <style>
+    /* --------------------------------------------------
+       1. CSS RESET & GLOBAL VARIABLES
+    -------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-cream: #f4efe6;
+      --bg-slate: #52899c;
+      --text-dark: #1f1f1f;
+      --text-light: #ffffff;
+      --border-color: #cccccc;
+      --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* --------------------------------------------------
+       2. HEADER / NAVIGATION BAR
+    -------------------------------------------------- */
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+      color: var(--text-light);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .logo img {
+      height: 28px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    /* --------------------------------------------------
+       3. HERO SECTION WITH VIDEO BACKGROUND
+    -------------------------------------------------- */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 90vh;
+      min-height: 550px;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 650px;
+      color: var(--text-light);
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-content p {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      opacity: 0.9;
+    }
+
+    .btn-quote {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 1px solid var(--text-light);
+      border-radius: 50px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .btn-quote:hover {
+      background-color: var(--text-light);
+      color: var(--text-dark);
+    }
+
+    /* --------------------------------------------------
+       4. SERVICE BUNDLES SECTION
+    -------------------------------------------------- */
+    .services-section {
+      padding: 4rem 5%;
+      background-color: var(--bg-cream);
+    }
+
+    .services-section h2 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .services-accordion {
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem 1rem;
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 400;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .accordion-item.active .accordion-header {
+      background-color: var(--bg-slate);
+      color: var(--text-light);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1rem;
+      background-color: var(--bg-cream);
+    }
+
+    .accordion-item.active .accordion-content {
+      padding: 1.5rem 1rem;
+      max-height: 200px;
+    }
+
+    /* --------------------------------------------------
+       5. PORTFOLIO / SLIDESHOW SECTIONS
+    -------------------------------------------------- */
+    .portfolio-section {
+      padding: 4rem 0 2rem 0;
+      background-color: var(--bg-cream);
+    }
+
+    .portfolio-section h2 {
+      padding: 0 5%;
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    /* YouTube Video Slider */
+    .video-slider {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--text-light);
+    }
+
+    .play-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--text-light);
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+      cursor: pointer;
+    }
+
+    .slide-title {
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .slide-subtitle {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.3);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 1rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .slider-btn.prev { left: 10px; }
+    .slider-btn.next { right: 10px; }
+
+    /* Auto Image Gallery Grid & Slideshow */
+    .auto-gallery {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 15px;
+      margin-top: 15px;
+      padding: 0 5%;
+    }
+
+    .gallery-container {
+      position: relative;
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .auto-slide-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .auto-slide-img.active {
+      opacity: 1;
+    }
+
+    /* --------------------------------------------------
+       6. BOOK NOW & FOOTER
+    -------------------------------------------------- */
+    .cta-section {
+      padding: 4rem 5% 2rem 5%;
+      background-color: var(--bg-cream);
+    }
+
+    .cta-link {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 5% 2rem 5%;
+      background-color: var(--bg-cream);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .copyright {
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    /* --------------------------------------------------
+       7. RESPONSIVE BREAKPOINTS (Tablet & Mobile)
+    -------------------------------------------------- */
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem 1.5rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+
+      .auto-gallery {
+        grid-template-columns: 1fr; /* Stack gallery images on mobile */
+      }
+
+      .video-slider {
+        height: 350px;
+      }
+
+      .slide-title {
+        font-size: 1.6rem;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="header">
+    <a href="#" class="logo">
+      <!-- REPLACE PLACEHOLDER LOGO -->
+      <img src="https://raw.githubusercontent.com/username/repo/main/images/logo.png" alt="Sky High Country Logo">
+      SKY HIGH COUNTRY
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#book">Book Now</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#home">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION WITH VIDEO BACKGROUND -->
+  <section class="hero" id="home">
+    <!-- REPLACE PLACEHOLDER VIDEO URL -->
+    <video class="hero-video" autoplay loop muted playsinline poster="https://raw.githubusercontent.com/username/repo/main/images/hero-fallback.jpg">
+      <source src="https://raw.githubusercontent.com/username/repo/main/videos/hero-background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Visuals that sell</h1>
+      <p>We provide exceptional production services for real estate across Western North Carolina and surrounding areas, featuring stunning aerial imagery and engaging motion graphics.</p>
+      <!-- LINK TO QUOTE FORM OR MODAL -->
+      <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" class="btn-quote" target="_blank">Receive Quote</a>
+    </div>
+  </section>
+
+  <!-- SERVICE BUNDLES SECTION -->
+  <section class="services-section" id="about">
+    <h2>Service Bundles</h2>
+    <div class="services-accordion">
+      
+      <div class="accordion-item active">
+        <button class="accordion-header">
+          <span>Photo & Video</span>
+        </button>
+        <div class="accordion-content">
+          <p>Comprehensive coverage combining high-resolution interior/exterior photography with engaging video walkthroughs and drone aerial footage.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>MLS Photography</span>
+        </button>
+        <div class="accordion-content">
+          <p>HDR photography tailored for MLS listings, optimized to show off true colors and optimal spatial perspective.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-header">
+          <span>Video Footage</span>
+        </button>
+        <div class="accordion-content">
+          <p>4K cinematographic property highlights, cinematic reels, and dynamic movement edits designed for high social media engagement.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="portfolio-section">
+    <h2>Portfolio</h2>
+    
+    <!-- YOUTUBE LINKED VIDEO SLIDESHOW -->
+    <div class="video-slider">
+      <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+      <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <!-- PLACEHOLDER SLIDE THUMBNAIL -->
+        <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-1.jpg" alt="Snowflake House">
+        <div class="slide-content">
+          <!-- REPLACE 'YOUTUBE_VIDEO_ID' WITH YOUR ACTUAL YOUTUBE EMBED OR LINK -->
+          <a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_1" target="_blank" class="play-btn">
+            &#9654; Play Video
+          </a>
+          <h3 class="slide-title">Snowflake House</h3>
+          <p class="slide-subtitle">Banner Elk, NC</p>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide">
+        <!-- PLACEHOLDER SLIDE THUMBNAIL -->
+        <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Mountain View Lodge">
+        <div class="slide-content">
+          <a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_2" target="_blank" class="play-btn">
+            &#9654; Play Video
+          </a>
+          <h3 class="slide-title">Mountain View Lodge</h3>
+          <p class="slide-subtitle">Blowing Rock, NC</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTOMATIC IMAGE SLIDESHOW GALLERY -->
+    <div class="auto-gallery">
+      <!-- Left Slideshow Container -->
+      <div class="gallery-container" id="left-slideshow">
+        <img class="auto-slide-img active" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-left-1.jpg" alt="Estate View 1">
+        <img class="auto-slide-img" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-left-2.jpg" alt="Estate View 2">
+      </div>
+      
+      <!-- Right Slideshow Container -->
+      <div class="gallery-container" id="right-slideshow">
+        <img class="auto-slide-img active" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-right-1.jpg" alt="Home Exterior 1">
+        <img class="auto-slide-img" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-right-2.jpg" alt="Home Exterior 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK NOW CTA LINK -->
+  <section class="cta-section" id="book">
+    <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" class="cta-link">BOOK NOW</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <a href="https://instagram.com/YOUR_INSTAGRAM_HANDLE" target="_blank" aria-label="Instagram">
+      <svg class="social-icon" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <p class="copyright">&copy; 2026 SKY HIGH COUNTRY</p>
+  </footer>
+
+  <!-- --------------------------------------------------
+       8. JAVASCRIPT LOGIC
+  -------------------------------------------------- -->
+  <script>
+    // --- Accordion Logic ---
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const header = item.querySelector('.accordion-header');
+      header.addEventListener('click', () => {
+        accordionItems.forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+        item.classList.toggle('active');
+      });
+    });
+
+    // --- Manual Portfolio Video Slider ---
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.video-slider .slide');
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    // --- Automatic Gallery Image Slideshow ---
+    function initAutoSlideshow(containerId, intervalTime) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      
+      const images = container.querySelectorAll('.auto-slide-img');
+      let index = 0;
+
+      setInterval(() => {
+        images[index].classList.remove('active');
+        index = (index + 1) % images.length;
+        images[index].classList.add('active');
+      }, intervalTime);
+    }
+
+    // Run automatic slideshows with staggered timing
+    initAutoSlideshow('left-slideshow', 4000);
+    initAutoSlideshow('right-slideshow', 5000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky High Country</title>
+  
+  <!-- LINK YOUR UNIVERSAL CSS HERE -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="logo">SKY HIGH COUNTRY</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html#book">Book Now</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="https://raw.githubusercontent.com/username/repo/main/videos/photo-bg.mp4" type="video/mp4">
+    </video>
+    <div class="hero-card">
+      <h1>Photography</h1>
+      <p>High-quality photography is the single most influential tool in real estate marketing, as 97% of homebuyers begin their search online...</p>
+      <p><strong>How High-Quality Photos Impact Sales:</strong></p>
+      <ul>
+        <li><strong>Sell Faster:</strong> Homes with professional photography sell up to 32% faster on average.</li>
+        <li><strong>Command Higher Prices:</strong> Professionally photographed homes consistently sell for more.</li>
+        <li><strong>Increase Online Visibility:</strong> Listings receive 118% more online views.</li>
+        <li><strong>Drive Buyer Engagement:</strong> Eye-tracking studies show buyers spend 60% of their time looking at photos.</li>
+        <li><strong>Improve Conversion:</strong> High-quality visuals make buyers 60% more likely to request an in-person viewing.</li>
+      </ul>
+      <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" class="btn-quote" target="_blank">Receive Quote</a>
+    </div>
+  </section>
+
+  <section class="packages-section">
+    <h2 class="section-title">Packages</h2>
+    <p class="subtitle">*prices vary on sqft.</p>
+
+    <div class="package-grid">
+      <div class="package-col">
+        <h3>Starter</h3>
+        <ul>
+          <li>15-20 Photos</li>
+          <li>Basic edits</li>
+          <li>24hr delivery</li>
+        </ul>
+        <p class="price">$125 - $150</p>
+      </div>
+
+      <div class="package-col">
+        <h3>Listing Pro</h3>
+        <ul>
+          <li>25-35 Photos</li>
+          <li>HDR Blended shots</li>
+          <li>Better composition + Detail focus</li>
+          <li>Matterport Floorplan</li>
+        </ul>
+        <p class="price">$175 - $225</p>
+      </div>
+
+      <div class="package-col">
+        <h3>Showcase</h3>
+        <ul>
+          <li>40-60 Photos</li>
+          <li>HDR Blended shots</li>
+          <li>Optional twilight shot</li>
+          <li>Matterport Floorplan</li>
+        </ul>
+        <p class="price">$250 - $325</p>
+      </div>
+    </div>
+
+    <div class="package-desc">
+      <p>This package focuses on capturing the essential spaces with clarity and balance, giving buyers a reliable first impression.</p>
+      <p>With more coverage, refined composition, and attention to detail, this package highlights the home in a way that feels inviting.</p>
+      <p>This package goes beyond standard coverage, capturing not just the space, but the feel of the home.</p>
+    </div>
+  </section>
+
+  <section class="addons-section">
+    <h2 class="section-title" style="margin-bottom: 2rem;">Add-ons</h2>
+    <div class="addon-row"><span>Drone for Aerial Views</span><span>$50</span></div>
+    <div class="addon-row"><span>Matterport Floorplan</span><span>$75</span></div>
+    <div class="addon-row"><span>Land and Acreage Drone</span><span>$75</span></div>
+    <div class="addon-row"><span>Lot Lines Digitally Added on Drone Footage</span><span>$50</span></div>
+    <div class="addon-row"><span>Digital Sky Replacements</span><span>$50</span></div>
+    <div class="addon-row"><span>Virtual Twilight Conversion</span><span>$50</span></div>
+    <div class="addon-row"><span>Virtual Staging</span><span>$75</span></div>
+  </section>
+
+  <h2 class="portfolio-title">Portfolio</h2>
+  <div class="auto-gallery">
+    <div class="gallery-container" id="left-slideshow">
+      <img class="auto-slide-img active" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-left-1.jpg" alt="Estate 1">
+      <img class="auto-slide-img" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-left-2.jpg" alt="Estate 2">
+    </div>
+    <div class="gallery-container" id="right-slideshow">
+      <img class="auto-slide-img active" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-right-1.jpg" alt="Home 1">
+      <img class="auto-slide-img" src="https://raw.githubusercontent.com/username/repo/main/images/gallery-right-2.jpg" alt="Home 2">
+    </div>
+  </div>
+
+  <section class="cta-section">
+    <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" class="cta-link">BOOK NOW</a>
+  </section>
+
+  <footer class="footer">
+    <a href="https://instagram.com/YOUR_HANDLE" target="_blank">Instagram</a>
+    <p>&copy; 2026 SKY HIGH COUNTRY</p>
+  </footer>
+
+  <script>
+    function initAutoSlideshow(containerId, intervalTime) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const images = container.querySelectorAll('.auto-slide-img');
+      let index = 0;
+      setInterval(() => {
+        images[index].classList.remove('active');
+        index = (index + 1) % images.length;
+        images[index].classList.add('active');
+      }, intervalTime);
+    }
+    initAutoSlideshow('left-slideshow', 4000);
+    initAutoSlideshow('right-slideshow', 5000);
+  </script>
+</body>
+</html>
