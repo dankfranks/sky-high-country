@@ -150,6 +150,54 @@ img, video {
   transform: translateY(0);
 }
 
+
+/* --------------------------------------------------
+   SINGLE-COLOR SVG LOGO CONTROLS
+-------------------------------------------------- */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo icon and text */
+  text-decoration: none;
+}
+
+/* 1. MOVE / POSITION CONTROL */
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Nudge placement: translate(X-axis, Y-axis) */
+  /* Example: (0, -2px) moves it UP 2px; (-4px, 0) moves it LEFT 4px */
+  transform: translate(0px, 0px); 
+}
+
+/* 2. SIZE & COLOR CONTROL */
+.logo-svg-mask {
+  display: inline-block;
+  
+  /* DIMENSIONS: Change size here */
+  width: 32px;
+  height: 32px;
+  
+  /* COLOR: Change fill color here */
+  background-color: #ffffff; 
+  
+  /* FILE REFERENCE: Path to your GitHub SVG file */
+  -webkit-mask: url('assets/home/logo.svg') no-repeat center / contain;
+  mask: url('assets/home/logo.svg') no-repeat center / contain;
+}
+
+/* LOGO TEXT */
+.logo-text {
+  font-family: var(--font-logo);
+  color: var(--text-light);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
 /* --------------------------------------------------
    3. HERO SECTIONS
 -------------------------------------------------- */
