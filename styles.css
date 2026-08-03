@@ -198,6 +198,46 @@ img, video {
   letter-spacing: 2px;
 }
 
+
+/* --------------------------------------------------
+   RECEIVE QUOTE PILL BUTTON
+-------------------------------------------------- */
+
+/* Default State: White text, white border, transparent inside */
+.btn-quote, 
+.btn-quote:visited {
+  display: inline-block;
+  padding: 0.8rem 2.2rem;
+  
+  /* Text & Border Styling */
+  color: #ffffff !important;           /* Forces text to remain white */
+  text-decoration: none !important;    /* Removes purple link underline */
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  
+  /* Outline & Shape */
+  border: 1.5px solid #ffffff;         /* White outline border */
+  border-radius: 50px;                 /* Creates rounded pill shape */
+  
+  /* Inside Fill: 0% Opacity (Transparent) */
+  background-color: rgba(255, 255, 255, 0); 
+  
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Hover & Active States: 10% Opacity inside fill */
+.btn-quote:hover, 
+.btn-quote:active {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  
+  /* 10% White Opacity inside fill */
+  background-color: rgba(255, 255, 255, 0.10); 
+}
+
+
 /* --------------------------------------------------
    3. HERO SECTIONS
 -------------------------------------------------- */
