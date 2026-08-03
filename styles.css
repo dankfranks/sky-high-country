@@ -709,41 +709,55 @@ img, video {
    VIDEO POPUP MODAL (Overlay)
 -------------------------------------------------- */
 
-.video-modal {
-  display: none;              /* Hidden by default */
-  position: fixed !important;  /* Floats on top of the entire screen */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.85); /* Dark background overlay */
-  z-index: 99999;             /* Forces it above header & gallery */
-  align-items: center;
-  justify-content: center;
-}
-
-.video-modal-content {
+/* Ensure the slide acts as the anchor frame */
+.slide {
   position: relative;
-  width: 85%;
-  max-width: 900px;
-  aspect-ratio: 16 / 9;       /* Keeps standard 16:9 video ratio */
-  background: #000;
-  border-radius: 8px;
   overflow: hidden;
 }
 
-.video-modal-content iframe {
+/* Embedded Slide Video Container */
+.slide-video-container {
+  display: none;             /* Hidden by default */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;               /* Sits right above image and text, but inside gallery bounds */
+  background: #000000;
+}
+
+.slide-video-container.active {
+  display: block;
+}
+
+.slide-iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
 
-.close-btn {
+/* Close button inside gallery corner */
+.close-slide-video {
   position: absolute;
-  top: -40px;
-  right: 0;
+  top: 15px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #ffffff;
   color: #ffffff;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   cursor: pointer;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.close-slide-video:hover {
+  background: #ffffff;
+  color: #000000;
 }
