@@ -91,9 +91,9 @@
         <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-1.jpg" alt="Snowflake House">
         <div class="slide-content">
           <!-- REPLACE 'YOUTUBE_VIDEO_ID' WITH YOUR ACTUAL YOUTUBE EMBED OR LINK -->
-          <a href="https://youtu.be/AYaCRbjhddU" target="_blank" class="play-btn">
+          <button class="play-btn" onclick="openVideoModal('https://youtu.be/https://www.youtube.com/embed/AYaCRbjhddU?si=DUf5HzPaC1nveLoQAYaCRbjhddU')">
             &#9654; Play Video
-          </a>
+          </button>
           <h3 class="slide-title">Snowflake House</h3>
           <p class="slide-subtitle">Banner Elk, NC</p>
         </div>
@@ -102,11 +102,11 @@
       <!-- Slide 2 -->
       <div class="slide">
         <!-- PLACEHOLDER SLIDE THUMBNAIL -->
-        <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Mountain View Lodge">
+        <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Sunset Ridge">
         <div class="slide-content">
-          <a href="https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_2" target="_blank" class="play-btn">
+          <button class="play-btn" onclick="openVideoModal('https://www.youtube.com/embed/uJeJXEkVDPg?si=tgur4ryUZBfVdzFx')">
             &#9654; Play Video
-          </a>
+          </button>
           <h3 class="slide-title">Mountain View Lodge</h3>
           <p class="slide-subtitle">Blowing Rock, NC</p>
         </div>
@@ -188,5 +188,31 @@
     initAutoSlideshow('left-slideshow', 4000);
     initAutoSlideshow('right-slideshow', 5000);
   </script>
+
+<!-- VIDEO POPUP MODAL -->
+  <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
+    <div class="video-modal-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeVideoModal()">&times;</span>
+      <iframe id="youtubePlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    function openVideoModal(videoUrl) {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('youtubePlayer');
+      iframe.src = videoUrl;
+      modal.style.display = 'flex';
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('youtubePlayer');
+      iframe.src = '';
+      modal.style.display = 'none';
+    }
+  </script>
+
 </body>
 </html>
