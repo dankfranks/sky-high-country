@@ -511,12 +511,11 @@ img, video {
 .video-slider {
   position: relative;
   width: 100%;
-  max-width: 1200px;     /* Keeps slider from stretching too wide on massive screens */
-  margin: 0 auto;        /* Centers gallery container */
-  aspect-ratio: 16 / 9;  /* Matches standard video proportions */
-  max-height: 650px;     /* Prevents it from getting overly tall */
+  height: 80vh;           /* Stretches tall on screen (80% viewport height) */
+  min-height: 500px;
+  max-height: 850px;
   overflow: hidden;
-  background: #000;
+  background: #000000;
 }
 
 .slide {
@@ -527,19 +526,43 @@ img, video {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;   /* Prevents hidden slides from blocking clicks */
 }
 
 .slide.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .slide-bg {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces image to scale and fill the whole slider background */
+  opacity: 0.6;       /* Soft dimming so text stays readable */
+}
+
+/* Video Container: Fills 100% of the gallery frame when played */
+.slide-video-container {
+  display: none;
+  position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.6;
+  background: #000000;
+  z-index: 20;
+}
+
+.slide-video-container.active {
+  display: block;
+}
+
+.slide-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .slide-iframe {
@@ -713,61 +736,4 @@ img, video {
 
 .bundle-link-btn:hover {
   opacity: 0.9;
-}
-
-/* --------------------------------------------------
-   VIDEO POPUP MODAL (Overlay)
--------------------------------------------------- */
-
-/* Ensure the slide acts as the anchor frame */
-.slide {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Embedded Slide Video Container */
-.slide-video-container {
-  display: none;             /* Hidden by default */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centers video inside slide frame */
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  background: #000000;
-  z-index: 20;
-}
-
-.slide-video-container.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Force YouTube iframe to fill the container without letterboxing distortion */
-.slide-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  object-fit: cover;
-}
-
-/* Close button positioning */
-.close-slide-video {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  font-size: 20px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
