@@ -293,6 +293,49 @@ img, video {
 }
 
 /* --------------------------------------------------
+   INNER PAGE CONTENT COPY TYPOGRAPHY
+-------------------------------------------------- */
+
+/* Main intro paragraph */
+.page-content p {
+  font-family: var(--font-body);
+  font-size: 1.25rem;       /* Increased from ~1rem */
+  line-height: 1.7;         /* Adds breathing room between lines */
+  color: var(--text-dark);
+  margin-bottom: 1.8rem;
+}
+
+/* Subheadings (e.g., "How High-Quality Photos Impact Sales:") */
+.page-content h3, 
+.page-content strong.section-subhead {
+  font-family: var(--font-body);
+  font-size: 1.35rem;       /* Larger subhead size */
+  font-weight: 700;
+  color: var(--text-dark);
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Bullet list text & spacing */
+.page-content ul {
+  margin-left: 1.2rem;
+  margin-bottom: 2.2rem;
+}
+
+.page-content li {
+  font-family: var(--font-body);
+  font-size: 1.15rem;       /* Increased bullet font size */
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;    /* Extra space between bullet points */
+}
+
+.page-content li strong {
+  font-weight: 700;
+}
+
+/* --------------------------------------------------
    RECEIVE QUOTE PILL BUTTON
 -------------------------------------------------- */
 
@@ -327,7 +370,27 @@ img, video {
   text-decoration: none !important;
   
   /* 10% White Opacity inside fill */
-  background-color: rgba(255, 255, 255, 0.10); 
+  background-color: rgba(255, 255, 255, 0.20); 
+}
+
+/* --------------------------------------------------
+   RECEIVE QUOTE BUTTON - DARK VARIANT (Light Backgrounds)
+-------------------------------------------------- */
+
+/* Default State: Dark text, dark border, transparent inside */
+.btn-quote-dark,
+.btn-quote-dark:visited {
+  color: var(--text-dark, #1a1a1a) !important;  /* Dark charcoal text */
+  border-color: var(--text-dark, #1a1a1a);       /* Dark charcoal border */
+  background-color: rgba(0, 0, 0, 0);            /* 0% opacity default */
+}
+
+/* Hover & Active States: 10% Dark Opacity fill */
+.btn-quote-dark:hover,
+.btn-quote-dark:active {
+  color: var(--text-dark, #1a1a1a) !important;
+  border-color: var(--text-dark, #1a1a1a);
+  background-color: rgba(0, 0, 0, 0.10);         /* 10% dark overlay on hover */
 }
 
 
@@ -433,14 +496,14 @@ img, video {
    6. PORTFOLIO & REUSABLE COMPONENTS
 -------------------------------------------------- */
 .portfolio-section {
-  padding: 4rem 0 2rem 0;
+  padding: 4rem 0 5rem 0;
   background-color: var(--bg-cream);
   font-family: var(--font-title);
 }
 
 .portfolio-section h2, .portfolio-title {
   padding: 0 5%;
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 300;
   margin-bottom: 2rem;
 }
@@ -448,7 +511,7 @@ img, video {
 .video-slider {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 700px;
   overflow: hidden;
   background: #000;
 }
@@ -487,12 +550,23 @@ img, video {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  background: transparent;          /* Clears default gray button fill */
   border: 1px solid var(--text-light);
   padding: 0.5rem 1.25rem;
   border-radius: 20px;
   color: var(--text-light);
+  font-family: inherit;              /* Uses page font instead of system button font */
+  font-size: 1rem;
   margin-bottom: 1.5rem;
   cursor: pointer;
+  position: relative;                /* Ensures z-index takes effect */
+  z-index: 10;                       /* Keeps button above slide image background */
+  transition: all 0.2s ease;
+}
+
+/* Optional hover state */
+.play-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .slide-title {
