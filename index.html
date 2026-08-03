@@ -91,9 +91,9 @@
         <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-1.jpg" alt="Snowflake House">
         <div class="slide-content">
           <!-- REPLACE 'YOUTUBE_VIDEO_ID' WITH YOUR ACTUAL YOUTUBE EMBED OR LINK -->
-          <button class="play-btn" onclick="openVideoModal('https://youtu.be/https://www.youtube.com/embed/AYaCRbjhddU?si=DUf5HzPaC1nveLoQAYaCRbjhddU')">
+          <button type="button" class="play-btn" onclick="openVideoModal(event, 'https://www.youtube.com/embed/AYaCRbjhddU?autoplay=1')">
             &#9654; Play Video
-          </button>
+        </button>
           <h3 class="slide-title">Snowflake House</h3>
           <p class="slide-subtitle">Banner Elk, NC</p>
         </div>
@@ -104,9 +104,9 @@
         <!-- PLACEHOLDER SLIDE THUMBNAIL -->
         <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Sunset Ridge">
         <div class="slide-content">
-          <button class="play-btn" onclick="openVideoModal('https://www.youtube.com/embed/uJeJXEkVDPg?si=tgur4ryUZBfVdzFx')">
+          <button type="button" class="play-btn" onclick="openVideoModal(event, 'https://www.youtube.com/embed/uJeJXEkVDPg?autoplay=1')">
             &#9654; Play Video
-          </button>
+        </button>
           <h3 class="slide-title">Mountain View Lodge</h3>
           <p class="slide-subtitle">Blowing Rock, NC</p>
         </div>
@@ -199,20 +199,28 @@
 
   <!-- JAVASCRIPT LOGIC -->
   <script>
-    function openVideoModal(videoUrl) {
-      const modal = document.getElementById('videoModal');
-      const iframe = document.getElementById('youtubePlayer');
+  function openVideoModal(event, videoUrl) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('youtubePlayer');
+    if (modal && iframe) {
       iframe.src = videoUrl;
       modal.style.display = 'flex';
     }
+  }
 
-    function closeVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const iframe = document.getElementById('youtubePlayer');
+  function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const iframe = document.getElementById('youtubePlayer');
+    if (modal && iframe) {
       iframe.src = '';
       modal.style.display = 'none';
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
