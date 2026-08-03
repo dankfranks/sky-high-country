@@ -321,64 +321,81 @@ img, video {
   color: var(--bg-cream);
 }
 
-/* --------------------------------------------------
-   4. HOME PAGE - SERVICE BUNDLES (ACCORDION)
--------------------------------------------------- */
-.services-section {
-  padding: 4rem 5%;
-  background-color: var(--bg-cream);
-}
 
-.services-section h2 {
-  font-size: 2.2rem;
-  font-weight: 300;
-  margin-bottom: 2rem;
-}
+/* --------------------------------------------------
+   ACCORDION HOVER & LINK CARDS
+-------------------------------------------------- */
 
 .services-accordion {
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.accordion-item {
-  border-bottom: 1px solid var(--border-color);
-}
-
-.accordion-item:last-child {
-  border-bottom: none;
-}
-
-.accordion-header {
+.accordion-hover-item {
   width: 100%;
-  text-align: left;
-  padding: 1.5rem 1rem;
-  background: transparent;
-  border: none;
-  font-size: 1.25rem;
-  font-weight: 400;
-  cursor: pointer;
+  position: relative;
+}
+
+/* MAIN BAR (Acts as direct page link) */
+.accordion-main-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 1.2rem 1.8rem;
+  background-color: var(--bg-slate); /* Slate default color */
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 400;
+  border-radius: 4px;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
-.accordion-item.active .accordion-header {
-  background-color: var(--bg-slate);
-  color: var(--text-light);
+/* TURN BLUE ON HOVER & CLICK */
+.accordion-hover-item:hover .accordion-main-bar {
+  background-color: #335870; /* Changes to solid header blue on hover */
 }
 
-.accordion-content {
+/* PLUS / MINUS ICON ANIMATION */
+.accordion-main-bar .icon {
+  font-size: 1.4rem;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.accordion-hover-item:hover .icon {
+  transform: rotate(45deg); /* Rotates + icon when hovered */
+}
+
+/* DROPDOWN TEXT PANEL */
+.accordion-dropdown-content {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 1rem;
-  background-color: var(--bg-cream);
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0 1.8rem;
+  border-radius: 0 0 4px 4px;
+  transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease;
 }
 
-.accordion-item.active .accordion-content {
-  padding: 1.5rem 1rem;
-  max-height: 200px;
+.accordion-dropdown-content p {
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* SHOW DROPDOWN TEXT ON HOVER */
+.accordion-hover-item:hover .accordion-dropdown-content {
+  max-height: 120px;
+  opacity: 1;
+  padding: 1.2rem 1.8rem;
 }
 
 /* --------------------------------------------------
