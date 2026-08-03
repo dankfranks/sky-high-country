@@ -59,46 +59,45 @@
     </div>
   </section>
 
-  <!-- SERVICE BUNDLES SECTION -->
-  <section class="services-section">
-  <h2 class="services-title">Service Bundles</h2>
+    <!-- SERVICE BUNDLES SECTION -->
+    <section class="services-section">
+    <h2 class="services-title">Service Bundles</h2>
 
-  <div class="services-list">
-    <a href="photo-video.html" class="service-row">
-      <span>Photo &amp; Video</span>
-    </a>
-    <a href="photography.html" class="service-row">
-      <span>MLS Photography</span>
-    </a>
-    <a href="video.html" class="service-row">
-      <span>Video Footage</span>
-    </a>
-  </div>
-</section>
-
-  <!-- PORTFOLIO SECTION -->
-  <section class="portfolio-section">
-    <h2>Portfolio</h2>
-    
-    <!-- YOUTUBE LINKED VIDEO SLIDESHOW -->
-    <div class="video-slider">
-      <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
-      <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
-
-      <!-- Slide 1 -->
-    <div class="slide active">
-      <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-1.jpg" alt="Snowflake House">
-  
-    <!-- Slide Content Overlay -->
-    <div class="slide-content">
-      <button type="button" class="play-btn" onclick="playInSlide(this, 'https://www.youtube.com/embed/AYaCRbjhddU?autoplay=1')">
-        &#9654; Play Video
-      </button>
-      <h3 class="slide-title">Snowflake House</h3>
-      <p class="slide-subtitle">Banner Elk, NC</p>
+    <div class="services-list">
+      <a href="photo-video.html" class="service-row">
+       <span>Photo &amp; Video</span>
+     </a>
+      <a href="photography.html" class="service-row">
+       <span>MLS Photography</span>
+      </a>
+      <a href="video.html" class="service-row">
+       <span>Video Footage</span>
+     </a>
     </div>
+  </section>
 
-      <!-- Inline Video Wrapper (Hidden until play is clicked) -->
+  <!-- ==================================================
+     SECTION 1: YOUTUBE LINKED VIDEO SLIDESHOW
+================================================== -->
+<section class="video-portfolio-section">
+  <h2 class="portfolio-title">Featured Videos</h2>
+
+  <div class="video-slider">
+    <button class="slider-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="slider-btn next" onclick="changeSlide(1)">&#10095;</button>
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <img class="slide-bg" src="assets/home/SkyHighCountry_Banners_SunsetRidge.png" alt="Snowflake House">
+
+      <div class="slide-content">
+        <button type="button" class="play-btn" onclick="playInSlide(this, 'https://www.youtube.com/embed/AYaCRbjhddU?autoplay=1')">
+          &#9654; Play Video
+        </button>
+        <h3 class="slide-title">Snowflake House</h3>
+        <p class="slide-subtitle">Banner Elk, NC</p>
+      </div>
+
       <div class="slide-video-container">
         <button type="button" class="close-slide-video" onclick="stopSlideVideo(this)">&times;</button>
         <iframe class="slide-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -107,8 +106,8 @@
 
     <!-- Slide 2 -->
     <div class="slide">
-      <img class="slide-bg" src="https://raw.githubusercontent.com/username/repo/main/images/portfolio-2.jpg" alt="Sunset Ridge">
-  
+      <img class="slide-bg" src="assets/home/little-log-cabin-1.jpg" alt="Sunset Ridge">
+
       <div class="slide-content">
         <button type="button" class="play-btn" onclick="playInSlide(this, 'https://www.youtube.com/embed/uJeJXEkVDPg?autoplay=1')">
           &#9654; Play Video
@@ -123,20 +122,27 @@
       </div>
     </div>
 
-    <!-- AUTOMATIC IMAGE SLIDESHOW GALLERY -->
-    <div class="auto-gallery">
-      <!-- Single Full-Width Slideshow Container -->
-     <div class="gallery-container" id="full-slideshow">
-       <img class="auto-slide-img active" src="assets/home/SkyHighCountry_Banners_SunsetRidge.png" alt="Sunset Ridge">
-       <img class="auto-slide-img" src="assets/home/little-log-cabin-1.jpg" alt="Little Log Cabin">
-       <img class="auto-slide-img" src="assets/home/sunset-ridge-3.jpg" alt="Sunset Ridge">
-       <img class="auto-slide-img" src="assets/home/wheeler-1.png" alt="Wheeler House">
-       <img class="auto-slide-img" src="assets/home/wheeler-2.jpg" alt="Wheeler House">
-       <img class="auto-slide-img" src="assets/home/gallery-6.jpg" alt="Gallery Image 6">
-     </div>
+  </div> <!-- /video-slider -->
+</section>
 
+
+<!-- ==================================================
+     SECTION 2: SEPARATE AUTOMATIC PHOTO GALLERY
+================================================== -->
+<section class="photo-gallery-section">
+  <h2 class="portfolio-title">Photo Gallery</h2>
+
+  <div class="auto-gallery">
+    <div class="gallery-container" id="full-slideshow">
+      <img class="auto-slide-img active" src="assets/home/SkyHighCountry_Banners_SunsetRidge.png" alt="Sunset Ridge">
+      <img class="auto-slide-img" src="assets/home/little-log-cabin-1.jpg" alt="Little Log Cabin">
+      <img class="auto-slide-img" src="assets/home/sunset-ridge-3.jpg" alt="Sunset Ridge">
+      <img class="auto-slide-img" src="assets/home/wheeler-1.png" alt="Wheeler House">
+      <img class="auto-slide-img" src="assets/home/wheeler-2.jpg" alt="Wheeler House">
+      <img class="auto-slide-img" src="assets/home/gallery-6.jpg" alt="Gallery Image 6">
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- BOOK NOW CTA LINK -->
   <section class="cta-section" id="book">
