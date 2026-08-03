@@ -16,7 +16,7 @@
    /* SPECIFIC FONTS */
   --font-logo: 'Fahkwang', sans-serif;
   --font-title: 'Fahkwang', sans-serif;
-  --font-body: 'Helvetica Light';
+  --font-body: 'Helvetica', light;
 }
 
 /* 1. Top bar logo text uses Benzin */
