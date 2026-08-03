@@ -12,25 +12,37 @@
   --text-dark: #1f1f1f;
   --text-light: #ffffff;
   --border-color: #cccccc;
-  --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+   /* SPECIFIC FONTS */
+  --font-logo: 'Fahkwang', sans-serif;
+  --font-title: 'Fahkwang', sans-serif;
+  --font-body: 'Helvetica Light';
+}
+
+/* 1. Top bar logo text uses Benzin */
+.logo {
+  font-family: var(--font-logo);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* 2. Titles and Headings use Fahkwang */
+h1, h2, h3, .section-title, .portfolio-title, .about-title {
+  font-family: var(--font-title);
+}
+
+/* 3. Everything else (body, paragraphs, links) defaults to Helvetica */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: var(--font-family);
-  background-color: var(--bg-cream);
-  color: var(--text-dark);
-  line-height: 1.6;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 img, video {
