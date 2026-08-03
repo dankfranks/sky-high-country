@@ -1,4 +1,9 @@
 /* --------------------------------------------------
+   1. FONT IMPORTS (Fahkwang + Geometric display font)
+-------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Syne:wght@700;800&display=swap');
+
+/* --------------------------------------------------
    1. GLOBAL VARIABLES & RESET
 -------------------------------------------------- */
 :root {
