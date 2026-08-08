@@ -135,7 +135,7 @@ img, video {
   list-style: none;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 300;
+  font-weight: 200;
 }
 
 .nav-links a {
@@ -200,7 +200,7 @@ img, video {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between logo icon and text */
+  gap: 12px; /* Space between logo icon and text */
   text-decoration: none;
 }
 
@@ -220,8 +220,8 @@ img, video {
   display: inline-block;
   
   /* DIMENSIONS: Change size here */
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   
   /* COLOR: Change fill color here */
   background-color: #ffffff; 
@@ -237,7 +237,7 @@ img, video {
   color: var(--text-light);
   font-size: 1.1rem;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   padding: 10;
 }
 
@@ -855,11 +855,16 @@ img, video {
   font-size: 0.75rem;
 }
 
+
 .social-icon {
   width: 24px;
   height: 24px;
   fill: var(--text-dark);
 }
+
+
+
+
 
 /* --------------------------------------------------
    9. RESPONSIVE BREAKPOINTS
