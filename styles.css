@@ -929,7 +929,7 @@ img, video {
   
   /* MANUAL POSITION CONTROL */
   /* Adjust X (horizontal) and Y (vertical) without affecting the arch shape */
-  transform: scale(1.6) translate(-70px, -450px); 
+  transform: scale(1.6) translate(-70px, -410px); 
 }
 
 /* ==================================================
