@@ -300,5 +300,130 @@
 </div>
     <p class="copyright">&copy; 2026 SKY HIGH COUNTRY</p>
   </footer>
+
+  <script>
+    function initAutoSlideshow(containerId, intervalTime) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const images = container.querySelectorAll('.auto-slide-img');
+      let index = 0;
+      setInterval(() => {
+        images[index].classList.remove('active');
+        index = (index + 1) % images.length;
+        images[index].classList.add('active');
+      }, intervalTime);
+    }
+    initAutoSlideshow('left-slideshow', 4000);
+    initAutoSlideshow('right-slideshow', 5000);
+
+    // --- Manual Portfolio Video Slider ---
+    let currentSlide = 0;
+
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll('.video-slider .slide');
+      if (!slides.length) return;
+
+    // Remove active class from current slide
+    slides[currentSlide].classList.remove('active');
+
+      // Calculate next slide index
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+
+      // Add active class to new slide
+      slides[currentSlide].classList.add('active');
+    }
+
+    // --- Automatic Gallery Image Slideshow ---
+    function initAutoSlideshow(containerId, intervalTime) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      
+      const images = container.querySelectorAll('.auto-slide-img');
+      let index = 0;
+
+      setInterval(() => {
+        images[index].classList.remove('active');
+        index = (index + 1) % images.length;
+        images[index].classList.add('active');
+      }, intervalTime);
+    }
+
+    // Run automatic slideshows with staggered timing
+    initAutoSlideshow('left-slideshow', 4000);
+    initAutoSlideshow('right-slideshow', 5000);
+  </script>
+
+
+<!-- VIDEO POPUP MODAL -->
+  <div id="videoModal" class="video-modal" onclick="closeVideoModal()">
+    <div class="video-modal-content" onclick="event.stopPropagation()">
+      <span class="close-btn" onclick="closeVideoModal()">&times;</span>
+      <iframe id="youtubePlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    function playInSlide(btnElement, videoUrl) {
+      // Find the parent slide box
+      const slide = btnElement.closest('.slide');
+      const videoContainer = slide.querySelector('.slide-video-container');
+      const iframe = slide.querySelector('.slide-iframe');
+
+      // Load video URL and show container
+      iframe.src = videoUrl;
+      videoContainer.classList.add('active');
+  }
+
+    function stopSlideVideo(closeBtnElement) {
+      const slide = closeBtnElement.closest('.slide');
+      const videoContainer = slide.querySelector('.slide-video-container');
+      const iframe = slide.querySelector('.slide-iframe');
+
+      // Unload video source to stop playback & hide container
+      iframe.src = '';
+      videoContainer.classList.remove('active');
+    }
+
+    // Automatically stop video playback when switching slides via arrows
+    function changeSlide(direction) {
+      // Stop any active inline video before switching
+      document.querySelectorAll('.slide-iframe').forEach(iframe => iframe.src = '');
+      document.querySelectorAll('.slide-video-container').forEach(container => container.classList.remove('active'));
+
+      const slides = document.querySelectorAll('.slide');
+      if (!slides.length) return;
+
+      let currentIndex = 0;
+      slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) currentIndex = index;
+        slide.classList.remove('active');
+      });
+
+      let nextIndex = (currentIndex + direction + slides.length) % slides.length;
+      slides[nextIndex].classList.add('active');
+    }
+
+  // --- Photo Gallery Slideshow Logic ---
+  let currentAutoPhotoIndex = 0; // Separate tracker from video index
+
+  function changeAutoPhoto(direction) {
+    // Use unique IDs or the updated IDs from Step 1 to grab photos
+    const photos = document.querySelectorAll('#full-slideshow .auto-slide-img');
+  
+    if (photos.length === 0) return; // Exit if no photos exist
+
+    // Remove current active class
+    photos[currentAutoPhotoIndex].classList.remove('active');
+
+    // Calculate next index with safe looping
+    currentAutoPhotoIndex = (currentAutoPhotoIndex + direction + photos.length) % photos.length;
+
+    // Add active class to new index
+    photos[currentAutoPhotoIndex].classList.add('active');
+  }
+
+
+  </script>
 </body>
 </html>
